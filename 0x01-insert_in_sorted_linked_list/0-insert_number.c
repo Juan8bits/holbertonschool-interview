@@ -31,7 +31,7 @@ listint_t *insert_node(listint_t **head, int number)
 			*head = new;
 			break;
 		}
-/*Checking for SSL element different to the first and last*/
+/*Checking for SLL element different to the first and last*/
 		else if (copy_head->next != NULL)
 		{
 			if (number <= (copy_head->next)->n)
@@ -40,7 +40,7 @@ listint_t *insert_node(listint_t **head, int number)
 				break;
 			}
 		}
-/*Checking for the last SSL element*/
+/*Checking for the last SLL element*/
 		else if (copy_head->next == NULL)
 		{	copy_head->next = new;
 			new->next = NULL;
