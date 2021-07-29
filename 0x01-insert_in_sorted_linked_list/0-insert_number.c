@@ -9,22 +9,25 @@
  */
 listint_t *insert_node(listint_t **head, int number)
 {
-	listint_t *copy_head;
-	listint_t *new;
+	listint_t *copy_head, *new;
 
-	if (!head || !*head)
+	if (!head)
 		return (NULL);
 	new = malloc(sizeof(listint_t));
 	if (new == NULL)
 		return (NULL);
 	new->n = number;
 	copy_head = *head;
+/*Checking for empty SLL and adding the first node*/
+	if (copy_head == NULL)
+	{	*head = new;
+		return (new);
+	}
 	while (copy_head)
 	{
 /*Checking the first SLL element*/
 		if (copy_head == *head && number <= copy_head->n)
-		{
-			new->next = copy_head;
+		{	new->next = copy_head;
 			*head = new;
 			break;
 		}
@@ -32,16 +35,14 @@ listint_t *insert_node(listint_t **head, int number)
 		else if (copy_head->next != NULL)
 		{
 			if (number <= (copy_head->next)->n)
-			{
-				new->next = copy_head->next;
+			{	new->next = copy_head->next;
 				copy_head->next = new;
 				break;
 			}
 		}
 /*Checking for the last SSL element*/
 		else if (copy_head->next == NULL)
-		{
-			copy_head->next = new;
+		{	copy_head->next = new;
 			new->next = NULL;
 			break;
 		}
