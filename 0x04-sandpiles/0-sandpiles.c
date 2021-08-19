@@ -61,6 +61,11 @@ short int stable(int grid[3][3])
 void expansion(int grid[3][3])
 {
 	unsigned int row, col;
+	int toppling[3][3] = {
+		{0, 0, 0},
+		{0, 0, 0},
+		{0, 0, 0}
+	};
 
 	for (row = 0; row < 3; row++)
 		for (col = 0; col < 3; col++)
@@ -70,16 +75,19 @@ void expansion(int grid[3][3])
 				grid[row][col] -= 4;
 				/*up*/
 				if (row > 0)
-					grid[row - 1][col] += 1;
+					toppling[row - 1][col] += 1;
 				/*down*/
-				if (row < 2 && (row + 1) < 3)
-					grid[row + 1][col] += 1;
+				if (row < 2)
+					toppling[row + 1][col] += 1;
 				/*left*/
 				if (col > 0)
-					grid[row][col - 1] += 1;
+					toppling[row][col - 1] += 1;
 				/*right*/
-				if (col < 2 && (col + 1) < 3)
-					grid[row][col + 1] += 1;
+				if (col < 2)
+					toppling[row][col + 1] += 1;
 			}
 		}
+	for (row = 0; row < 3; row++)
+		for (col = 0; col < 3; col++)
+			grid[row][col] = grid[row][col] + toppling[row][col];
 }
