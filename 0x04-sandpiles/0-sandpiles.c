@@ -37,9 +37,6 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 		my_print_grid(grid1);
 		expansion(grid1);
 	}
-	for (row = 0; row < 3; row++)
-		for (col = 0; col < 3; col++)
-			grid2[row][col] = grid1[row][col];
 }
 
 /**
@@ -75,13 +72,13 @@ void expansion(int grid[3][3])
 				if (row > 0)
 					grid[row - 1][col] += 1;
 				/*down*/
-				if (row < 2)
+				if (row < 2 && (row + 1) < 3)
 					grid[row + 1][col] += 1;
 				/*left*/
 				if (col > 0)
 					grid[row][col - 1] += 1;
 				/*right*/
-				if (col < 2)
+				if (col < 2 && (col + 1) < 3)
 					grid[row][col + 1] += 1;
 			}
 		}
