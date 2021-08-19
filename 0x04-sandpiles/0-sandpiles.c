@@ -8,6 +8,7 @@ void my_print_grid(int grid[3][3])
 {
 	int i, j;
 
+	printf("=\n");
 	for (i = 0; i < 3; i++)
 	{
 		for (j = 0; j < 3; j++)
@@ -33,7 +34,6 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 			grid1[row][col] = grid1[row][col] + grid2[row][col];
 	while (!stable(grid1))
 	{
-		printf("=\n");
 		my_print_grid(grid1);
 		expansion(grid1);
 	}
@@ -67,19 +67,19 @@ void expansion(int grid[3][3])
 		{
 			if (grid[row][col] > 3)
 			{
-				grid[row][col] = grid[row][col] - 4;
-				/*left*/
-				if (col > 0)
-					grid[row][col - 1]++;
-				/*right*/
-				if (col < 2)
-					grid[row][col + 1]++;
+				grid[row][col] -= 4;
 				/*up*/
 				if (row > 0)
-					grid[row - 1][col]++;
+					grid[row - 1][col] += 1;
 				/*down*/
 				if (row < 2)
-					grid[row + 1][col]++;
+					grid[row + 1][col] += 1;
+				/*left*/
+				if (col > 0)
+					grid[row][col - 1] += 1;
+				/*right*/
+				if (col < 2)
+					grid[row][col + 1] += 1;
 			}
 		}
 }
