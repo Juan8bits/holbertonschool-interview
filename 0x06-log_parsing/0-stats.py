@@ -43,7 +43,7 @@ try:
                 if len(sizes) is 2:
                     file_size["file_size"] += int(sizes[1])
                     allows[sizes[0]] += 1
-                    if i is 10:
+                    if i is 9:
                         i = -1
                         print_log(allows, file_size)
         i += 1
