@@ -35,20 +35,20 @@ try:
         # "GET /projects/260 HTTP/1.1",
         # "<status code> <file size>"]
         first_form = line[:-1].split('"')
-        if len(first_form) is 3:
+        if len(first_form) == 3:
             # ["<IP Address> - ", "[<date>]"]
             second_form = first_form[0].split("[")
-            if len(second_form) is 2:
+            if len(second_form) == 2:
                 # ["<status code>", "<file size>"]
                 sizes = first_form[2].split()
-                if len(sizes) is 2:
+                if len(sizes) == 2:
                     file_size["file_size"] += int(sizes[1])
                     allows[sizes[0]] += 1
                     if i is 9:
                         i = -1
                         print_log(allows, file_size)
         i += 1
-except ValueError:
+except (ValueError, KeyError):
     pass
 finally:
     print_log(allows, file_size)
