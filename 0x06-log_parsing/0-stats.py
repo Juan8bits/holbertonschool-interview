@@ -19,9 +19,10 @@ def print_log(allows, file_size):
             value of the size of a file.
     """
     print("File size: {}".format(file_size["file_size"]))
-    for k, v in allows.items():
-        if v is not 0:
-            print("{}: {}".format(k, v))
+    sort_allows = sorted(allows.keys())
+    for k in sort_allows:
+        if allows[k] is not 0:
+            print("{}: {}".format(k, allows[k]))
 
 
 i = 0
