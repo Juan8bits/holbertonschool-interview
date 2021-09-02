@@ -42,13 +42,15 @@ try:
                 # ["<status code>", "<file size>"]
                 sizes = first_form[2].split()
                 if len(sizes) == 2:
+                    if sizes[0] not in allows.keys():
+                        continue
                     allows[sizes[0]] += 1
                     file_size["file_size"] += int(sizes[1])
                     if i is 9:
                         i = -1
                         print_log(allows, file_size)
         i += 1
-except (ValueError, KeyError):
+except ValueError:
     pass
 finally:
     print_log(allows, file_size)
