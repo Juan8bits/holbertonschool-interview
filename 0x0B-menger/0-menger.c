@@ -6,32 +6,28 @@
 */
 void menger(int level)
 {
-	int side = pow(3, level), i, j, d;
+	int n, m, j, x, y;
+	char s;
 
-	if (level < 0)
-		return;
-	if (level == 0)
+	m = pow(3, level);
+	for (n = 0; n < m; n++)
 	{
-		printf("#\n");
-		return;
-	}
-	for (i = 0; i < side; i++)
-	{
-		for (j = 0; j < side; j++)
+		for (j = 0; j < m;)
 		{
-			for (d = side; d; d /= 3)
+			s = '#';
+			x = n;
+			y = j++;
+			while (x > 0 || y > 0)
 			{
-				if (((i % 3 == 1) && (j % 3 == 1)) || (i % (3 * level) / level == 1 && j % (3 * level) / level == 1))
-					break;
+				if (x % 3 == 1 && y % 3 == 1)
+				{
+					s = ' ';
+				}
+				x /= 3;
+				y /= 3;
 			}
-			if (d)
-			{
-				printf(" ");
-			}
-			else
-				printf("#");
+			printf("%c", s);
 		}
 		printf("\n");
-
 	}
 }
