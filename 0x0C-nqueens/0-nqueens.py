@@ -37,4 +37,5 @@ for i in range(1, N):
 for s in range(len(queens)):
     for i in range(N):
         queens[s][i] = [i, queens[s][i]]
-print(queens)
+for i in queens:
+    print(i)
