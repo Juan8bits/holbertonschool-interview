@@ -10,3 +10,5 @@
 * Your function must return a pointer on the first node where value is located
 * If value is not present in list or if head is NULL, your function must return NULL
 * Every time you compare a value in the list to the value you are searching, you have to print this value
+
+You might need other function to compile the program and you can find it in [this link](https://github.com/holbertonschool/0x0E.Linear_search-in_skip_list)
